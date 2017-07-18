@@ -1,6 +1,5 @@
 package me.adamstroud.aoc.y2016.d01
 
-import me.adamstroud.aoc.y2016.d01.Heading
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Test
