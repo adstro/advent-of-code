@@ -17,7 +17,7 @@ class Year2016Test {
     @Test
     fun testDay1() {
         val position = Position()
-        
+
         Files.newBufferedReader(Paths.get("input", "2016.1.txt")).use {
             with(position) {
                 it.readLines()
@@ -40,7 +40,6 @@ class Year2016Test {
                 it.readLines()
                         .map { it.trim() }
                         .forEach {
-                            println("line = $it")
                             move(it)
                             passcode += computeValue()
                         }
