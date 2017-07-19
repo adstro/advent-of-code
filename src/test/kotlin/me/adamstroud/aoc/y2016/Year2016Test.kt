@@ -48,4 +48,16 @@ class Year2016Test {
             }
         }
     }
+
+    @Test
+    fun testDay3() {
+        Files.newBufferedReader(Paths.get("input", "2016.3.txt")).use {
+            val count = it.readLines()
+                    .map { it.trim().split("\\s+".toRegex())}
+                    .map { listOf(it[0].toInt(), it[1].toInt(), it[2].toInt()).sorted() }
+                    .count { it[2] < it[0] + it[1] }
+
+            assertThat(count, equalTo(1032))
+        }
+    }
 }
