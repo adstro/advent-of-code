@@ -1,13 +1,19 @@
 package me.adamstroud.aoc.y2016
 
+import com.sun.org.apache.xml.internal.security.algorithms.MessageDigestAlgorithm
 import me.adamstroud.aoc.y2016.d01.Position
 import me.adamstroud.aoc.y2016.d02.Keypad
 import me.adamstroud.aoc.y2016.d04.Day4
+import org.assertj.core.api.Assertions
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Test
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.security.MessageDigest
+import java.util.stream.IntStream
+import javax.xml.bind.DatatypeConverter
+import kotlin.coroutines.experimental.EmptyCoroutineContext.plus
 
 /**
  * TODO
@@ -74,5 +80,22 @@ class Year2016Test {
 
             assertThat(sum, equalTo(158835))
         }
+    }
+
+    @Test
+    fun testDay05() {
+        val md = MessageDigest.getInstance("MD5")
+        val input = "ugkcyxxp"
+
+        val code = String(IntRange(0, Int.MAX_VALUE).asSequence()
+                .map { DatatypeConverter.printHexBinary(md.digest((input + it).toByteArray())) }
+                .filter { it.startsWith("00000") }
+                .map { it[5] }
+                .take(8)
+                .toList()
+                .toCharArray())
+                .toLowerCase()
+
+        Assertions.assertThat(code).isEqualTo("d4cd2ee1")
     }
 }
