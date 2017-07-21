@@ -1,19 +1,18 @@
 package me.adamstroud.aoc.y2016
 
-import com.sun.org.apache.xml.internal.security.algorithms.MessageDigestAlgorithm
 import me.adamstroud.aoc.y2016.d01.Position
 import me.adamstroud.aoc.y2016.d02.Keypad
 import me.adamstroud.aoc.y2016.d04.Day4
+import me.adamstroud.aoc.y2016.d06.Day6
 import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
 import org.junit.Test
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.security.MessageDigest
-import java.util.stream.IntStream
 import javax.xml.bind.DatatypeConverter
-import kotlin.coroutines.experimental.EmptyCoroutineContext.plus
 
 /**
  * TODO
@@ -96,6 +95,15 @@ class Year2016Test {
                 .toCharArray())
                 .toLowerCase()
 
-        Assertions.assertThat(code).isEqualTo("d4cd2ee1")
+        assertThat(code).isEqualTo("d4cd2ee1")
+    }
+
+    @Test
+    fun testDay06() {
+        val day6 = Day6()
+
+        Files.newBufferedReader(Paths.get("input", "2016.6.txt")).use {
+            assertThat(day6.run(it.readText())).isEqualTo("qqqluigu")
+        }
     }
 }
