@@ -4,7 +4,8 @@ class Day6 {
     fun run(input: String): String {
         val charCountList: MutableList<MutableMap<Char, Int>> = ArrayList()
 
-        input.split(System.lineSeparator())
+
+        input.lines()
                 .map { it.trim() }
                 .forEach {
                     for (i in 0..it.length - 1) {
