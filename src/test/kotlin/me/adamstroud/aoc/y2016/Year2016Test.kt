@@ -1,5 +1,6 @@
 package me.adamstroud.aoc.y2016
 
+import com.google.common.hash.HashCode
 import me.adamstroud.aoc.y2016.d01.Position
 import me.adamstroud.aoc.y2016.d02.Keypad
 import me.adamstroud.aoc.y2016.d04.Day4
@@ -12,7 +13,6 @@ import org.junit.Test
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.security.MessageDigest
-import javax.xml.bind.DatatypeConverter
 
 /**
  * TODO
@@ -87,7 +87,7 @@ class Year2016Test {
         val input = "ugkcyxxp"
 
         val code = String(IntRange(0, Int.MAX_VALUE).asSequence()
-                .map { DatatypeConverter.printHexBinary(md.digest((input + it).toByteArray())) }
+                .map { HashCode.fromBytes(md.digest((input + it).toByteArray())).toString() }
                 .filter { it.startsWith("00000") }
                 .map { it[5] }
                 .take(8)
