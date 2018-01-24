@@ -112,9 +112,7 @@ class Year2016Test {
         val day7 = Day7()
 
         Files.newBufferedReader(Paths.get("input", "2016.7.txt")).use {
-            val sum = it.readLines().count { day7.supportsTls(it) }
-
-            assertThat(sum).isEqualTo(118)
+            assertThat(it.readLines().count { day7.supportsTls(it) }).isEqualTo(118)
         }
     }
 }
