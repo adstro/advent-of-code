@@ -5,7 +5,7 @@ import me.adamstroud.aoc.y2016.d01.Position
 import me.adamstroud.aoc.y2016.d02.Keypad
 import me.adamstroud.aoc.y2016.d04.Day4
 import me.adamstroud.aoc.y2016.d06.Day6
-import org.assertj.core.api.Assertions
+import me.adamstroud.aoc.y2016.d07.Day7
 import org.assertj.core.api.Assertions.assertThat
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Assert.assertThat
@@ -104,6 +104,17 @@ class Year2016Test {
 
         Files.newBufferedReader(Paths.get("input", "2016.6.txt")).use {
             assertThat(day6.run(it.readText())).isEqualTo("qqqluigu")
+        }
+    }
+
+    @Test
+    fun testDay07() {
+        val day7 = Day7()
+
+        Files.newBufferedReader(Paths.get("input", "2016.7.txt")).use {
+            val sum = it.readLines().count { day7.supportsTls(it) }
+
+            assertThat(sum).isEqualTo(118)
         }
     }
 }
